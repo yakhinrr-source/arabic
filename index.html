@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
 
     <style>
-        /* ===== RESET & BASE ===== */
+        /* ===== RESET & BASE (без изменений) ===== */
         *,
         *::before,
         *::after {
@@ -289,7 +289,7 @@
             color: #ccc;
         }
 
-        /* ===== HOME ===== */
+        /* ===== HOME (без изменений) ===== */
         .home-hero {
             text-align: center;
             padding: 30px 0 20px;
@@ -377,7 +377,7 @@
             margin-top: 6px;
         }
 
-        /* ===== CATEGORY PAGE ===== */
+        /* ===== CATEGORY PAGE (без изменений) ===== */
         .category-header {
             display: flex;
             align-items: center;
@@ -549,7 +549,7 @@
             color: #fff;
         }
 
-        /* ===== FLASHCARD MODE ===== */
+        /* ===== FLASHCARD MODE (без изменений) ===== */
         .flash-overlay {
             position: fixed;
             inset: 0;
@@ -692,7 +692,7 @@
             transform: translateY(-2px);
         }
 
-        /* ===== FOOTER ===== */
+        /* ===== FOOTER (без изменений) ===== */
         footer {
             background: var(--bg-beige);
             border-top: 1px solid rgba(74, 55, 40, 0.06);
@@ -760,7 +760,153 @@
             font-weight: 600;
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== PAGE RULES (расширен) ===== */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+            margin-top: 20px;
+        }
+
+        .rule-block {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            box-shadow: var(--shadow);
+            border: 1px solid #f0e8dc;
+        }
+
+        .rule-block h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .rule-block h3 .ar {
+            font-family: var(--font-arabic);
+            font-weight: 400;
+            font-size: 1.2rem;
+            color: var(--text-soft);
+        }
+
+        .rule-block p {
+            color: var(--text-soft);
+            margin-bottom: 8px;
+        }
+
+        .rule-block ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .rule-block ul li {
+            padding: 6px 0 6px 24px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23C4A484" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>') left center no-repeat;
+            background-size: 14px;
+            margin-bottom: 2px;
+            color: var(--text-dark);
+        }
+
+        .rule-block .arabic-example {
+            font-family: var(--font-arabic);
+            font-size: 1.3rem;
+            direction: rtl;
+            color: var(--text-dark);
+            background: var(--bg-beige);
+            padding: 6px 16px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 4px 4px 4px 0;
+        }
+
+        .rule-block .example-trans {
+            font-size: 0.9rem;
+            color: var(--text-soft);
+            margin-left: 6px;
+        }
+
+        .rule-block .alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .rule-block .alphabet-grid .letter-box {
+            background: var(--bg-beige);
+            border-radius: 8px;
+            padding: 8px 4px;
+            text-align: center;
+            font-family: var(--font-arabic);
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            border: 1px solid #e8ddd0;
+        }
+        .rule-block .alphabet-grid .letter-box .name {
+            font-family: var(--font-latin);
+            font-size: 0.65rem;
+            display: block;
+            color: var(--text-soft);
+            margin-top: 2px;
+        }
+
+        .rule-block .vowel-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .rule-block .vowel-grid .vowel-item {
+            background: var(--bg-beige);
+            padding: 6px 16px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        .rule-block .vowel-grid .vowel-item .ar {
+            font-family: var(--font-arabic);
+            font-size: 1.4rem;
+            direction: rtl;
+        }
+
+        /* Таблицы в правилах */
+        .rule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            font-size: 0.95rem;
+        }
+        .rule-table th {
+            background: var(--bg-beige);
+            color: var(--text-dark);
+            font-weight: 600;
+            padding: 10px 12px;
+            border: 1px solid #e8ddd0;
+            text-align: center;
+        }
+        .rule-table td {
+            padding: 8px 12px;
+            border: 1px solid #e8ddd0;
+            text-align: center;
+            background: #fffaf5;
+        }
+        .rule-table tr:nth-child(even) td {
+            background: #f8f2ea;
+        }
+        .rule-table .ar-cell {
+            font-family: var(--font-arabic);
+            font-size: 1.2rem;
+            direction: rtl;
+        }
+        .rule-table .ru-cell {
+            color: var(--text-soft);
+        }
+
+        /* ===== RESPONSIVE (дополнено) ===== */
         @media (max-width: 900px) {
             .header-inner {
                 flex-wrap: wrap;
@@ -805,6 +951,16 @@
             .flash-card .f-arabic {
                 font-size: 2.4rem;
             }
+            .rules-grid {
+                grid-template-columns: 1fr;
+            }
+            .rule-table {
+                font-size: 0.8rem;
+            }
+            .rule-table th,
+            .rule-table td {
+                padding: 6px 8px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -841,6 +997,19 @@
             .flash-nav button {
                 padding: 8px 16px;
                 font-size: 0.8rem;
+            }
+            .rule-block {
+                padding: 18px 16px;
+            }
+            .rule-block .alphabet-grid {
+                grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            }
+            .rule-table {
+                font-size: 0.7rem;
+            }
+            .rule-table th,
+            .rule-table td {
+                padding: 4px 6px;
             }
         }
 
@@ -902,6 +1071,9 @@
                 <a href="#" data-page="category" data-cat="time">Время</a>
                 <a href="#" data-page="category" data-cat="travel">Путешествия</a>
                 <a href="#" data-page="category" data-cat="general">Общие</a>
+                <a href="#" data-page="category" data-cat="family">Семья</a>
+                <a href="#" data-page="category" data-cat="weather">Погода</a>
+                <a href="#" data-page="rules">📚 Правила</a>
             </nav>
         </div>
     </header>
@@ -926,9 +1098,10 @@
                     </h1>
                     <p>Лексика по темам с произношением и переводом</p>
                     <div class="home-sub">
-                        <span class="badge">🌴 10+ тем</span>
+                        <span class="badge">🌴 12+ тем</span>
                         <span class="badge">🔊 Аудио</span>
                         <span class="badge">📝 Самопроверка</span>
+                        <span class="badge">📚 Правила</span>
                     </div>
                 </div>
 
@@ -951,6 +1124,268 @@
                 </div>
                 <div class="word-grid" id="wordGrid">
                     <!-- rendered by JS -->
+                </div>
+            </div>
+
+            <!-- ===== RULES PAGE (расширен) ===== -->
+            <div id="page-rules" class="hidden-page">
+                <div style="margin-bottom: 20px;">
+                    <h2 style="font-size: 1.8rem; font-weight: 700;">📚 Правила арабского языка</h2>
+                    <p style="color: var(--text-soft); font-size: 1.05rem;">Основные грамматические и фонетические правила для начинающих</p>
+                </div>
+
+                <div class="rules-grid">
+
+                    <!-- Алфавит -->
+                    <div class="rule-block">
+                        <h3>Арабский алфавит <span class="ar">الأبجدية</span></h3>
+                        <p>28 букв, пишутся справа налево. Форма буквы меняется в зависимости от положения в слове.</p>
+                        <div class="alphabet-grid">
+                            <div class="letter-box">ا <span class="name">алиф</span></div>
+                            <div class="letter-box">ب <span class="name">ба</span></div>
+                            <div class="letter-box">ت <span class="name">та</span></div>
+                            <div class="letter-box">ث <span class="name">са</span></div>
+                            <div class="letter-box">ج <span class="name">джим</span></div>
+                            <div class="letter-box">ح <span class="name">ха</span></div>
+                            <div class="letter-box">خ <span class="name">ха (горт.)</span></div>
+                            <div class="letter-box">د <span class="name">даль</span></div>
+                            <div class="letter-box">ذ <span class="name">заль</span></div>
+                            <div class="letter-box">ر <span class="name">ра</span></div>
+                            <div class="letter-box">ز <span class="name">зайн</span></div>
+                            <div class="letter-box">س <span class="name">син</span></div>
+                            <div class="letter-box">ش <span class="name">шин</span></div>
+                            <div class="letter-box">ص <span class="name">сад</span></div>
+                            <div class="letter-box">ض <span class="name">дад</span></div>
+                            <div class="letter-box">ط <span class="name">та (эмф.)</span></div>
+                            <div class="letter-box">ظ <span class="name">за (эмф.)</span></div>
+                            <div class="letter-box">ع <span class="name">айн</span></div>
+                            <div class="letter-box">غ <span class="name">гайн</span></div>
+                            <div class="letter-box">ف <span class="name">фа</span></div>
+                            <div class="letter-box">ق <span class="name">каф</span></div>
+                            <div class="letter-box">ك <span class="name">каф</span></div>
+                            <div class="letter-box">ل <span class="name">лам</span></div>
+                            <div class="letter-box">م <span class="name">мим</span></div>
+                            <div class="letter-box">ن <span class="name">нун</span></div>
+                            <div class="letter-box">ه <span class="name">ха</span></div>
+                            <div class="letter-box">و <span class="name">вав</span></div>
+                            <div class="letter-box">ي <span class="name">йа</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Гласные -->
+                    <div class="rule-block">
+                        <h3>Гласные (огласовки) <span class="ar">الحركات</span></h3>
+                        <p>Краткие гласные обозначаются над или под буквой:</p>
+                        <div class="vowel-grid">
+                            <span class="vowel-item"><span class="ar">ـَ</span> фатха (а)</span>
+                            <span class="vowel-item"><span class="ar">ـِ</span> кясра (и)</span>
+                            <span class="vowel-item"><span class="ar">ـُ</span> дамма (у)</span>
+                            <span class="vowel-item"><span class="ar">ـْ</span> сукун (нет гласной)</span>
+                            <span class="vowel-item"><span class="ar">ـّ</span> шадда (удвоение)</span>
+                        </div>
+                        <p style="margin-top: 12px;">Долгие гласные: <span class="arabic-example">ا</span> (а̄), <span class="arabic-example">و</span> (ӯ), <span class="arabic-example">ي</span> (ӣ).</p>
+                    </div>
+
+                    <!-- Определённый артикль -->
+                    <div class="rule-block">
+                        <h3>Определённый артикль <span class="ar">ال</span></h3>
+                        <p>Приставка <span class="arabic-example">ال</span> (аль-) делает слово определённым. Если слово начинается с «солнечной» буквы (ت, ث, د, ذ, ر, ز, س, ش, ص, ض, ط, ظ, ن, ل), то <strong>л</strong> артикля ассимилируется.</p>
+                        <p><strong>Примеры:</strong></p>
+                        <ul>
+                            <li><span class="arabic-example">القمر</span> <span class="example-trans">аль-камар (луна)</span> — лунная буква</li>
+                            <li><span class="arabic-example">الشمس</span> <span class="example-trans">аш-шамс (солнце)</span> — солнечная буква</li>
+                        </ul>
+                    </div>
+
+                    <!-- Личные местоимения (отдельные) -->
+                    <div class="rule-block">
+                        <h3>Личные местоимения <span class="ar">الضمائر المنفصلة</span></h3>
+                        <table class="rule-table">
+                            <thead>
+                                <tr><th>Русский</th><th>Арабский</th><th>Транслитерация</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>я</td><td class="ar-cell">أنا</td><td>anā</td></tr>
+                                <tr><td>ты (м.р.)</td><td class="ar-cell">أنتَ</td><td>anta</td></tr>
+                                <tr><td>ты (ж.р.)</td><td class="ar-cell">أنتِ</td><td>anti</td></tr>
+                                <tr><td>он</td><td class="ar-cell">هو</td><td>huwa</td></tr>
+                                <tr><td>она</td><td class="ar-cell">هي</td><td>hiya</td></tr>
+                                <tr><td>мы</td><td class="ar-cell">نحن</td><td>naḥnu</td></tr>
+                                <tr><td>вы (м.р.)</td><td class="ar-cell">أنتم</td><td>antum</td></tr>
+                                <tr><td>вы (ж.р.)</td><td class="ar-cell">أنتنَّ</td><td>antunna</td></tr>
+                                <tr><td>они (м.р.)</td><td class="ar-cell">هم</td><td>hum</td></tr>
+                                <tr><td>они (ж.р.)</td><td class="ar-cell">هنَّ</td><td>hunna</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Притяжательные местоимения (суффиксы) -->
+                    <div class="rule-block">
+                        <h3>Притяжательные местоимения (суффиксы) <span class="ar">الضمائر المتصلة</span></h3>
+                        <p>Присоединяются к существительным для обозначения принадлежности.</p>
+                        <table class="rule-table">
+                            <thead>
+                                <tr><th>Русский</th><th>Суффикс</th><th>Пример (كتاب = книга)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>мой</td><td class="ar-cell">ـي</td><td class="ar-cell">كتابي</td></tr>
+                                <tr><td>твой (м.р.)</td><td class="ar-cell">ـكَ</td><td class="ar-cell">كتابك</td></tr>
+                                <tr><td>твой (ж.р.)</td><td class="ar-cell">ـكِ</td><td class="ar-cell">كتابكِ</td></tr>
+                                <tr><td>его</td><td class="ar-cell">ـهُ</td><td class="ar-cell">كتابه</td></tr>
+                                <tr><td>её</td><td class="ar-cell">ـها</td><td class="ar-cell">كتابها</td></tr>
+                                <tr><td>наш</td><td class="ar-cell">ـنا</td><td class="ar-cell">كتابنا</td></tr>
+                                <tr><td>ваш (м.р.)</td><td class="ar-cell">ـكم</td><td class="ar-cell">كتابكم</td></tr>
+                                <tr><td>ваш (ж.р.)</td><td class="ar-cell">ـكنَّ</td><td class="ar-cell">كتابكنَّ</td></tr>
+                                <tr><td>их (м.р.)</td><td class="ar-cell">ـهم</td><td class="ar-cell">كتابهم</td></tr>
+                                <tr><td>их (ж.р.)</td><td class="ar-cell">ـهنَّ</td><td class="ar-cell">كتابهنَّ</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Предлоги -->
+                    <div class="rule-block">
+                        <h3>Основные предлоги <span class="ar">حروف الجر</span></h3>
+                        <table class="rule-table">
+                            <thead>
+                                <tr><th>Русский</th><th>Арабский</th><th>Транслитерация</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>в, на</td><td class="ar-cell">في</td><td>fī</td></tr>
+                                <tr><td>к, для</td><td class="ar-cell">إلى</td><td>ilā</td></tr>
+                                <tr><td>от, из</td><td class="ar-cell">من</td><td>min</td></tr>
+                                <tr><td>с, у</td><td class="ar-cell">عند</td><td>\'inda</td></tr>
+                                <tr><td>на (поверх)</td><td class="ar-cell">على</td><td>\'alā</td></tr>
+                                <tr><td>после</td><td class="ar-cell">بعد</td><td>ba\'da</td></tr>
+                                <tr><td>перед</td><td class="ar-cell">قبل</td><td>qabla</td></tr>
+                                <tr><td>под</td><td class="ar-cell">تحت</td><td>taḥta</td></tr>
+                                <tr><td>над</td><td class="ar-cell">فوق</td><td>fawqa</td></tr>
+                                <tr><td>между</td><td class="ar-cell">بين</td><td>bayna</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Вопросительные слова -->
+                    <div class="rule-block">
+                        <h3>Вопросительные слова <span class="ar">أدوات الاستفهام</span></h3>
+                        <table class="rule-table">
+                            <thead>
+                                <tr><th>Русский</th><th>Арабский</th><th>Транслитерация</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>кто?</td><td class="ar-cell">من</td><td>man</td></tr>
+                                <tr><td>что?</td><td class="ar-cell">ماذا</td><td>mādhā</td></tr>
+                                <tr><td>где?</td><td class="ar-cell">أين</td><td>ayna</td></tr>
+                                <tr><td>когда?</td><td class="ar-cell">متى</td><td>matā</td></tr>
+                                <tr><td>почему?</td><td class="ar-cell">لماذا</td><td>limādhā</td></tr>
+                                <tr><td>как?</td><td class="ar-cell">كيف</td><td>kayfa</td></tr>
+                                <tr><td>сколько?</td><td class="ar-cell">كم</td><td>kam</td></tr>
+                                <tr><td>чей?</td><td class="ar-cell">لمن</td><td>liman</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Отрицание -->
+                    <div class="rule-block">
+                        <h3>Отрицание <span class="ar">النفي</span></h3>
+                        <p>Основные отрицательные частицы:</p>
+                        <table class="rule-table">
+                            <thead>
+                                <tr><th>Русский</th><th>Арабский</th><th>Примечание</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>не (глагол наст./буд.)</td><td class="ar-cell">لا</td><td>لا أذهب = я не иду</td></tr>
+                                <tr><td>не (прошедшее)</td><td class="ar-cell">لم</td><td>لم أذهب = я не пошёл</td></tr>
+                                <tr><td>не (категорическое)</td><td class="ar-cell">ليس</td><td>ليس طالباً = он не студент</td></tr>
+                                <tr><td>нет (ответ)</td><td class="ar-cell">لا</td><td>لا = нет</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Корневая система -->
+                    <div class="rule-block">
+                        <h3>Корневая система <span class="ar">الجذر الثلاثي</span></h3>
+                        <p>Большинство арабских слов образованы от трёхбуквенных корней. Например, корень <span class="arabic-example">ك ت ب</span> (к-т-б) связан с письмом:</p>
+                        <ul>
+                            <li><span class="arabic-example">كتب</span> (kataba) — он написал</li>
+                            <li><span class="arabic-example">يكتب</span> (yaktubu) — он пишет</li>
+                            <li><span class="arabic-example">كتاب</span> (kitāb) — книга</li>
+                            <li><span class="arabic-example">مكتب</span> (maktab) — офис / письменный стол</li>
+                            <li><span class="arabic-example">كاتب</span> (kātib) — писатель</li>
+                        </ul>
+                    </div>
+
+                    <!-- Породы глаголов -->
+                    <div class="rule-block">
+                        <h3>Породы глаголов <span class="ar">الأوزان الصرفية</span></h3>
+                        <p>От трёхбуквенного корня образуются производные формы (породы) с дополнительными значениями.</p>
+                        <table class="rule-table">
+                            <thead>
+                                <tr><th>Порода</th><th>Шаблон</th><th>Значение</th><th>Пример (корень ك ت ب)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>I</td><td>فَعَلَ</td><td>основное действие</td><td class="ar-cell">كتب</td></tr>
+                                <tr><td>II</td><td>فَعَّلَ</td><td>усиление, многократность</td><td class="ar-cell">درّس</td></tr>
+                                <tr><td>III</td><td>فاعَلَ</td><td>взаимодействие</td><td class="ar-cell">كاتب</td></tr>
+                                <tr><td>IV</td><td>أَفْعَلَ</td><td>каузатив (заставить сделать)</td><td class="ar-cell">أكتب</td></tr>
+                                <tr><td>V</td><td>تَفَعَّلَ</td><td>рефлексив от II</td><td class="ar-cell">تدرّس</td></tr>
+                                <tr><td>VI</td><td>تَفاعَلَ</td><td>рефлексив от III</td><td class="ar-cell">تكاتب</td></tr>
+                                <tr><td>VII</td><td>اِنْفَعَلَ</td><td>пассивно-возвратное</td><td class="ar-cell">انكتب</td></tr>
+                                <tr><td>VIII</td><td>اِفْتَعَلَ</td><td>рефлексив или интенсив</td><td class="ar-cell">اكتتب</td></tr>
+                                <tr><td>IX</td><td>اِفْعَلَّ</td><td>цвет / физическое состояние</td><td class="ar-cell">احمرّ</td></tr>
+                                <tr><td>X</td><td>اِسْتَفْعَلَ</td><td>просьба, поиск</td><td class="ar-cell">استكتب</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Склонение существительных (падежи) -->
+                    <div class="rule-block">
+                        <h3>Падежи существительных <span class="ar">الإعراب</span></h3>
+                        <p>В классическом арабском три падежа, выражаемые окончаниями:</p>
+                        <table class="rule-table">
+                            <thead>
+                                <tr><th>Падеж</th><th>Окончание</th><th>Пример (كتاب)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Номинатив (рафъ)</td><td class="ar-cell">ـُ</td><td class="ar-cell">كتابٌ</td></tr>
+                                <tr><td>Аккузатив (насб)</td><td class="ar-cell">ـَ</td><td class="ar-cell">كتاباً</td></tr>
+                                <tr><td>Генитив (джарр)</td><td class="ar-cell">ـِ</td><td class="ar-cell">كتابٍ</td></tr>
+                            </tbody>
+                        </table>
+                        <p>В разговорной речи окончания часто опускаются.</p>
+                    </div>
+
+                    <!-- Числительные (количественные) -->
+                    <div class="rule-block">
+                        <h3>Числительные (1-10) <span class="ar">الأعداد</span></h3>
+                        <table class="rule-table">
+                            <thead>
+                                <tr><th>Число</th><th>Арабский</th><th>Транслитерация</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td class="ar-cell">واحد</td><td>wāḥid</td></tr>
+                                <tr><td>2</td><td class="ar-cell">اثنان</td><td>ithnān</td></tr>
+                                <tr><td>3</td><td class="ar-cell">ثلاثة</td><td>thalātha</td></tr>
+                                <tr><td>4</td><td class="ar-cell">أربعة</td><td>arba\'a</td></tr>
+                                <tr><td>5</td><td class="ar-cell">خمسة</td><td>khamsa</td></tr>
+                                <tr><td>6</td><td class="ar-cell">ستة</td><td>sitta</td></tr>
+                                <tr><td>7</td><td class="ar-cell">سبعة</td><td>sab\'a</td></tr>
+                                <tr><td>8</td><td class="ar-cell">ثمانية</td><td>thamāniya</td></tr>
+                                <tr><td>9</td><td class="ar-cell">تسعة</td><td>tis\'a</td></tr>
+                                <tr><td>10</td><td class="ar-cell">عشرة</td><td>\'ashara</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Порядок слов в предложении -->
+                    <div class="rule-block">
+                        <h3>Порядок слов <span class="ar">ترتيب الكلمات</span></h3>
+                        <p>В классическом арабском предложении обычно используется порядок <strong>VSO</strong> (глагол – подлежащее – дополнение). В разговорном часто употребляется <strong>SVO</strong>.</p>
+                        <ul>
+                            <li><span class="arabic-example">قرأ الولد الكتاب</span> — прочитал мальчик книгу (VSO)</li>
+                            <li><span class="arabic-example">الولد قرأ الكتاب</span> — мальчик прочитал книгу (SVO)</li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
 
@@ -998,10 +1433,10 @@
 
 
     <!-- ============================================================ -->
-    <!-- ===== JAVASCRIPT ===== -->
+    <!-- ===== JAVASCRIPT (дополнен новыми категориями и словами) ===== -->
     <script>
         // ================================================================
-        // DATA
+        // DATA (расширены все категории, добавлены новые)
         // ================================================================
 
         const WORDS_DATA = {
@@ -1033,6 +1468,19 @@
                     { ar: 'رقص', translit: 'raqaṣa', ru: 'танцевать' },
                     { ar: 'ضحك', translit: 'ḍaḥika', ru: 'смеяться' },
                     { ar: 'بكى', translit: 'bakā', ru: 'плакать' },
+                    // добавленные
+                    { ar: 'سمع', translit: 'sami\'a', ru: 'слушать' },
+                    { ar: 'فكر', translit: 'fakara', ru: 'думать' },
+                    { ar: 'عرف', translit: '\'arafa', ru: 'знать' },
+                    { ar: 'قدر', translit: 'qadara', ru: 'мочь' },
+                    { ar: 'جاء', translit: 'jā\'a', ru: 'приходить' },
+                    { ar: 'خرج', translit: 'kharaja', ru: 'уходить' },
+                    { ar: 'فتح', translit: 'fataḥa', ru: 'открывать' },
+                    { ar: 'غلق', translit: 'ghalaqa', ru: 'закрывать' },
+                    { ar: 'اشترى', translit: 'ishtara', ru: 'покупать' },
+                    { ar: 'باع', translit: 'bā\'a', ru: 'продавать' },
+                    { ar: 'عمل', translit: '\'amila', ru: 'работать' },
+                    { ar: 'درس', translit: 'darasa', ru: 'учиться' },
                 ]
             },
 
@@ -1061,6 +1509,17 @@
                     { ar: 'بطيء', translit: 'baṭī\'', ru: 'медленный' },
                     { ar: 'صعب', translit: 'ṣa\'b', ru: 'трудный' },
                     { ar: 'سهل', translit: 'sahl', ru: 'лёгкий' },
+                    // добавленные
+                    { ar: 'سعيد', translit: 'sa\'īd', ru: 'счастливый' },
+                    { ar: 'حزين', translit: 'ḥazīn', ru: 'грустный' },
+                    { ar: 'جائع', translit: 'jā\'i\'', ru: 'голодный' },
+                    { ar: 'شبعان', translit: 'shab\'ān', ru: 'сытый' },
+                    { ar: 'متعب', translit: 'muta\'ib', ru: 'уставший' },
+                    { ar: 'نشيط', translit: 'nashīṭ', ru: 'бодрый' },
+                    { ar: 'نظيف', translit: 'naẓīf', ru: 'чистый' },
+                    { ar: 'قذر', translit: 'qadhir', ru: 'грязный' },
+                    { ar: 'هادئ', translit: 'hādi\'', ru: 'тихий' },
+                    { ar: 'صاخب', translit: 'ṣākhib', ru: 'громкий' },
                 ]
             },
 
@@ -1081,6 +1540,9 @@
                     { ar: 'وردي', translit: 'wardī', ru: 'розовый' },
                     { ar: 'رمادي', translit: 'ramādī', ru: 'серый' },
                     { ar: 'ذهبي', translit: 'dhahabī', ru: 'золотой' },
+                    // добавленные
+                    { ar: 'فيروزي', translit: 'fayrūzī', ru: 'бирюзовый' },
+                    { ar: 'خزامي', translit: 'khuzāmī', ru: 'лавандовый' },
                 ]
             },
 
@@ -1119,6 +1581,11 @@
                     { ar: 'تسعون', translit: 'tis\'ūn', ru: 'девяносто' },
                     { ar: 'مائة', translit: 'mi\'a', ru: 'сто' },
                     { ar: 'ألف', translit: 'alf', ru: 'тысяча' },
+                    // добавим ещё до 100
+                    { ar: 'مائتان', translit: 'mi\'atān', ru: 'двести' },
+                    { ar: 'ثلاثمائة', translit: 'thalāthumi\'a', ru: 'триста' },
+                    { ar: 'أربعمائة', translit: 'arba\'umi\'a', ru: 'четыреста' },
+                    { ar: 'خمسمائة', translit: 'khamsumi\'a', ru: 'пятьсот' },
                 ]
             },
 
@@ -1144,6 +1611,14 @@
                     { ar: 'عنب', translit: '\'inab', ru: 'виноград' },
                     { ar: 'خضار', translit: 'khuḍār', ru: 'овощи' },
                     { ar: 'فاكهة', translit: 'fākiha', ru: 'фрукты' },
+                    // добавленные
+                    { ar: 'زيت', translit: 'zayt', ru: 'масло' },
+                    { ar: 'بيض', translit: 'bayḍ', ru: 'яйцо' },
+                    { ar: 'جبن', translit: 'jubn', ru: 'сыр' },
+                    { ar: 'عسل', translit: '\'asal', ru: 'мёд' },
+                    { ar: 'معكرونة', translit: 'ma\'karūna', ru: 'паста' },
+                    { ar: 'شوربة', translit: 'shūrba', ru: 'суп' },
+                    { ar: 'سلطة', translit: 'salata', ru: 'салат' },
                 ]
             },
 
@@ -1162,6 +1637,11 @@
                     { ar: 'جورب', translit: 'jawrab', ru: 'носок' },
                     { ar: 'قبعة', translit: 'qubba\'a', ru: 'шляпа' },
                     { ar: 'سترة', translit: 'sutra', ru: 'куртка' },
+                    // добавленные
+                    { ar: 'معطف', translit: 'mi\'ṭaf', ru: 'пальто' },
+                    { ar: 'طاقية', translit: 'ṭāqiya', ru: 'шапка' },
+                    { ar: 'قفاز', translit: 'quffāz', ru: 'перчатки' },
+                    { ar: 'شورت', translit: 'shūrt', ru: 'шорты' },
                 ]
             },
 
@@ -1180,6 +1660,12 @@
                     { ar: 'فيل', translit: 'fīl', ru: 'слон' },
                     { ar: 'نمر', translit: 'namir', ru: 'тигр' },
                     { ar: 'أرنب', translit: 'arnab', ru: 'кролик' },
+                    // добавленные
+                    { ar: 'دب', translit: 'dubb', ru: 'медведь' },
+                    { ar: 'ذئب', translit: 'dhi\'b', ru: 'волк' },
+                    { ar: 'ثعلب', translit: 'tha\'lab', ru: 'лиса' },
+                    { ar: 'أرنب بري', translit: 'arnab barrī', ru: 'заяц' },
+                    { ar: 'بومة', translit: 'būma', ru: 'сова' },
                 ]
             },
 
@@ -1206,6 +1692,9 @@
                     { ar: 'الخميس', translit: 'al-khamīs', ru: 'четверг' },
                     { ar: 'الجمعة', translit: 'al-jumu\'a', ru: 'пятница' },
                     { ar: 'السبت', translit: 'as-sabt', ru: 'суббота' },
+                    // добавленные
+                    { ar: 'ثانية', translit: 'thāniya', ru: 'секунда' },
+                    { ar: 'قرن', translit: 'qarn', ru: 'век' },
                 ]
             },
 
@@ -1227,6 +1716,12 @@
                     { ar: 'شارع', translit: 'shāri\'', ru: 'улица' },
                     { ar: 'قرية', translit: 'qarya', ru: 'деревня' },
                     { ar: 'حديقة', translit: 'ḥadīqa', ru: 'сад' },
+                    // добавленные
+                    { ar: 'محطة قطار', translit: 'maḥaṭṭat qiṭār', ru: 'вокзал' },
+                    { ar: 'حافلة', translit: 'ḥāfila', ru: 'автобус' },
+                    { ar: 'تاكسي', translit: 'tāksī', ru: 'такси' },
+                    { ar: 'خريطة', translit: 'kharīṭa', ru: 'карта' },
+                    { ar: 'تذكرة', translit: 'tadhkira', ru: 'билет' },
                 ]
             },
 
@@ -1246,14 +1741,68 @@
                     { ar: 'نافذة', translit: 'nāfidha', ru: 'окно' },
                     { ar: 'بلد', translit: 'balad', ru: 'страна' },
                     { ar: 'شارع', translit: 'shāri\'', ru: 'улица' },
+                    // добавленные
+                    { ar: 'يد', translit: 'yad', ru: 'рука' },
+                    { ar: 'رجل', translit: 'rijl', ru: 'нога' },
+                    { ar: 'رأس', translit: 'ra\'s', ru: 'голова' },
+                    { ar: 'وجه', translit: 'wajh', ru: 'лицо' },
+                    { ar: 'صديق', translit: 'ṣadīq', ru: 'друг' },
+                    { ar: 'عائلة', translit: '\'ā\'ila', ru: 'семья' },
+                ]
+            },
+
+            // Новая категория: Семья
+            family: {
+                name: 'Семья',
+                nameAr: 'العائلة',
+                icon: '👪',
+                words: [
+                    { ar: 'أب', translit: 'ab', ru: 'отец' },
+                    { ar: 'أم', translit: 'umm', ru: 'мать' },
+                    { ar: 'ابن', translit: 'ibn', ru: 'сын' },
+                    { ar: 'بنت', translit: 'bint', ru: 'дочь' },
+                    { ar: 'أخ', translit: 'akh', ru: 'брат' },
+                    { ar: 'أخت', translit: 'ukht', ru: 'сестра' },
+                    { ar: 'جد', translit: 'jadd', ru: 'дедушка' },
+                    { ar: 'جدة', translit: 'jadda', ru: 'бабушка' },
+                    { ar: 'عم', translit: '\'amm', ru: 'дядя (по отцу)' },
+                    { ar: 'خال', translit: 'khāl', ru: 'дядя (по матери)' },
+                    { ar: 'عمة', translit: '\'amma', ru: 'тётя (по отцу)' },
+                    { ar: 'خالة', translit: 'khāla', ru: 'тётя (по матери)' },
+                    { ar: 'زوج', translit: 'zawj', ru: 'муж' },
+                    { ar: 'زوجة', translit: 'zawja', ru: 'жена' },
+                    { ar: 'طفل', translit: 'ṭifl', ru: 'ребёнок' },
+                    { ar: 'أبناء', translit: 'abnā\'', ru: 'дети' },
+                ]
+            },
+
+            // Новая категория: Погода
+            weather: {
+                name: 'Погода',
+                nameAr: 'الطقس',
+                icon: '🌤️',
+                words: [
+                    { ar: 'طقس', translit: 'ṭaqs', ru: 'погода' },
+                    { ar: 'مطر', translit: 'maṭar', ru: 'дождь' },
+                    { ar: 'ثلج', translit: 'thalj', ru: 'снег' },
+                    { ar: 'رياح', translit: 'riyāḥ', ru: 'ветер' },
+                    { ar: 'شمس', translit: 'shams', ru: 'солнце' },
+                    { ar: 'سحاب', translit: 'saḥāb', ru: 'облако' },
+                    { ar: 'ضباب', translit: 'ḍabāb', ru: 'туман' },
+                    { ar: 'حرارة', translit: 'ḥarāra', ru: 'температура' },
+                    { ar: 'بارد', translit: 'bārid', ru: 'холодно' },
+                    { ar: 'حار', translit: 'ḥārr', ru: 'жарко' },
+                    { ar: 'معتدل', translit: 'mu\'tadil', ru: 'умеренно' },
+                    { ar: 'عاصفة', translit: '\'āṣifa', ru: 'буря' },
                 ]
             }
         };
 
-        // Category order for display
+        // Category order for display (добавлены family и weather)
         const CATEGORY_ORDER = [
             'verbs', 'adjectives', 'colors', 'numbers', 'food',
-            'clothing', 'animals', 'time', 'travel', 'general'
+            'clothing', 'animals', 'time', 'travel', 'general',
+            'family', 'weather'
         ];
 
         // ================================================================
@@ -1277,6 +1826,7 @@
 
         const homePage = $('#page-home');
         const categoryPage = $('#page-category');
+        const rulesPage = $('#page-rules');
         const homeGrid = $('#homeCategoryGrid');
         const wordGrid = $('#wordGrid');
         const catTitle = $('#catName');
@@ -1319,7 +1869,6 @@
             });
             homeGrid.innerHTML = html;
 
-            // Click handler for category cards
             homeGrid.querySelectorAll('.category-card').forEach(el => {
                 el.addEventListener('click', () => {
                     const cat = el.dataset.cat;
@@ -1357,7 +1906,6 @@
             });
             wordGrid.innerHTML = html;
 
-            // Audio buttons
             wordGrid.querySelectorAll('.audio-btn').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -1366,7 +1914,6 @@
                 });
             });
 
-            // Toggle translation
             wordGrid.querySelectorAll('.toggle-trans').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const card = this.closest('.word-card');
@@ -1386,7 +1933,6 @@
                 });
             });
 
-            // Update flash data
             flashWords = cat.words;
             flashIndex = 0;
             flashReveal = false;
@@ -1398,27 +1944,36 @@
 
         function showPage(page) {
             currentPage = page;
+            homePage.classList.add('hidden-page');
+            homePage.classList.remove('visible-page');
+            categoryPage.classList.add('hidden-page');
+            categoryPage.classList.remove('visible-page');
+            rulesPage.classList.add('hidden-page');
+            rulesPage.classList.remove('visible-page');
+
             if (page === 'home') {
                 homePage.classList.remove('hidden-page');
                 homePage.classList.add('visible-page');
-                categoryPage.classList.add('hidden-page');
-                categoryPage.classList.remove('visible-page');
                 breadcrumbCat.textContent = 'Все темы';
-                // Update nav active
                 document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
                 document.querySelector('nav a[data-page="home"]')?.classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else if (page === 'category') {
-                homePage.classList.add('hidden-page');
-                homePage.classList.remove('visible-page');
                 categoryPage.classList.remove('hidden-page');
                 categoryPage.classList.add('visible-page');
-                // Update nav active
+                breadcrumbCat.textContent = WORDS_DATA[currentCategory]?.name || 'Категория';
                 document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
                 document.querySelector(`nav a[data-cat="${currentCategory}"]`)?.classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (page === 'rules') {
+                rulesPage.classList.remove('hidden-page');
+                rulesPage.classList.add('visible-page');
+                breadcrumbCat.textContent = 'Правила';
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                document.querySelector('nav a[data-page="rules"]')?.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-            // Close mobile nav
+
             mainNav.classList.remove('open');
         }
 
@@ -1432,6 +1987,10 @@
             showPage('home');
         }
 
+        function navigateRules() {
+            showPage('rules');
+        }
+
         // ================================================================
         // SPEECH
         // ================================================================
@@ -1441,21 +2000,16 @@
                 alert('Ваш браузер не поддерживает голосовое воспроизведение.');
                 return;
             }
-
-            // Cancel any ongoing speech
             window.speechSynthesis.cancel();
-
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = 'ar-SA';
             utterance.rate = 0.85;
             utterance.pitch = 1;
-
             if (btn) {
                 btn.classList.add('playing');
                 utterance.onend = () => btn.classList.remove('playing');
                 utterance.onerror = () => btn.classList.remove('playing');
             }
-
             window.speechSynthesis.speak(utterance);
         }
 
@@ -1611,6 +2165,12 @@
                 navigateHome();
             });
 
+            // Rules link
+            document.querySelector('nav a[data-page="rules"]')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                navigateRules();
+            });
+
             // Breadcrumb home link
             document.querySelector('.breadcrumbs a[data-page="home"]')?.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1627,7 +2187,6 @@
             flashPrev.addEventListener('click', flashPrevCard);
             flashNext.addEventListener('click', flashNextCard);
 
-            // Keyboard shortcuts for flashcard
             document.addEventListener('keydown', (e) => {
                 if (!flashOverlay.classList.contains('active')) return;
                 if (e.key === 'Escape') closeFlash();
@@ -1639,7 +2198,6 @@
                 }
             });
 
-            // Close flash on overlay click (but not on card)
             flashOverlay.addEventListener('click', (e) => {
                 if (e.target === flashOverlay) closeFlash();
             });
@@ -1662,7 +2220,6 @@
             resultsContainer.id = 'searchResults';
             searchWrap.appendChild(resultsContainer);
 
-            // Reassign refs
             const searchInputRef = document.getElementById('searchInput');
             const searchResultsRef = document.getElementById('searchResults');
 
@@ -1693,7 +2250,6 @@
                 mainNav.classList.toggle('open');
             });
 
-            // Close nav on link click (mobile)
             mainNav.querySelectorAll('a').forEach(a => {
                 a.addEventListener('click', () => {
                     mainNav.classList.remove('open');
@@ -1703,13 +2259,14 @@
             // Handle initial hash
             if (window.location.hash) {
                 const hash = window.location.hash.replace('#', '');
-                if (WORDS_DATA[hash]) {
+                if (hash === 'rules') {
+                    setTimeout(navigateRules, 100);
+                } else if (WORDS_DATA[hash]) {
                     setTimeout(() => navigateToCategory(hash), 100);
                 }
             }
         }
 
-        // Run on DOM ready
         document.addEventListener('DOMContentLoaded', init);
     </script>
 
