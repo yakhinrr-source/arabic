@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Изучаем арабский — слова по темам</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-main: #FDFBF7;
+            --bg-beige: #F5EBDD;
+            --bg-card: #FDFBF7;
+            --bg-category: #EED9C4;
+            --bg-accent: #D7B89C;
+            --bg-dark: #C4A484;
+            --text-dark: #4A3728;
+            --text-soft: #6B4F3A;
+            --shadow: 0 4px 20px rgba(74, 55, 40, 0.08);
+            --radius: 16px;
+            --transition: 0.25s ease;
+            --font-arabic: 'Amiri', 'Noto Naskh Arabic', serif;
+            --font-latin: 'Inter', 'Roboto', -apple-system, sans-serif;
+            --max-width: 1200px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-latin);
+            background: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+            background: none;
+            color: inherit;
+        }
+        input {
+            font-family: inherit;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-beige);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-dark);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--bg-accent);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: var(--bg-beige);
+            border-bottom: 1px solid rgba(74, 55, 40, 0.06);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(6px);
+            background: rgba(245, 235, 221, 0.92);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .logo-flag {
+            width: 36px;
+            height: 24px;
+            flex-shrink: 0;
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-flag svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .logo span {
+            letter-spacing: -0.3px;
+        }
+        .logo .accent {
+            font-weight: 400;
+            color: var(--text-soft);
+            font-size: 0.9rem;
+        }
+
+        /* Search */
+        .search-wrap {
+            flex: 1;
+            min-width: 200px;
+            max-width: 420px;
+            position: relative;
+        }
+
+        .search-wrap input {
+            width: 100%;
+            padding: 10px 16px 10px 42px;
+            border-radius: 30px;
+            border: 1px solid #e0d3c4;
+            background: #fffaf5;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            transition: var(--transition);
+            outline: none;
+        }
+        .search-wrap input:focus {
+            border-color: var(--bg-dark);
+            box-shadow: 0 0 0 3px rgba(196, 164, 132, 0.2);
+        }
+        .search-wrap input::placeholder {
+            color: #b3a090;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #b3a090;
+            pointer-events: none;
+            font-size: 1rem;
+        }
+
+        .search-results {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            background: #fffaf5;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid #e8ddd0;
+            max-height: 320px;
+            overflow-y: auto;
+            display: none;
+            z-index: 50;
+        }
+        .search-results.active {
+            display: block;
+        }
+        .search-results .result-item {
+            padding: 10px 16px;
+            border-bottom: 1px solid #f0e8dc;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .search-results .result-item:hover {
+            background: var(--bg-beige);
+        }
+        .search-results .result-item .ar {
+            font-family: var(--font-arabic);
+            font-size: 1.1rem;
+            direction: rtl;
+        }
+        .search-results .result-item .ru {
+            color: var(--text-soft);
+        }
+        .search-results .result-item .cat {
+            font-size: 0.7rem;
+            color: #b3a090;
+            background: var(--bg-beige);
+            padding: 2px 10px;
+            border-radius: 20px;
+        }
+        .search-results .no-result {
+            padding: 20px;
+            text-align: center;
+            color: var(--text-soft);
+        }
+
+        /* Nav toggle (mobile) */
+        .nav-toggle {
+            display: none;
+            font-size: 1.6rem;
+            padding: 4px 8px;
+            color: var(--text-dark);
+            background: none;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-soft);
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        nav a:hover,
+        nav a.active {
+            background: var(--bg-dark);
+            color: #fff;
+        }
+
+        /* ===== MAIN ===== */
+        main {
+            flex: 1;
+            padding: 30px 0 40px;
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            font-size: 0.8rem;
+            color: var(--text-soft);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .breadcrumbs span {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        .breadcrumbs .sep {
+            color: #ccc;
+        }
+
+        /* ===== HOME ===== */
+        .home-hero {
+            text-align: center;
+            padding: 30px 0 20px;
+        }
+        .home-hero h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .home-hero h1 .ar {
+            font-family: var(--font-arabic);
+            font-weight: 400;
+            font-size: 1.6rem;
+            display: inline-block;
+            margin-left: 8px;
+            color: var(--text-soft);
+        }
+        .home-hero p {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            margin-top: 6px;
+        }
+
+        .home-sub {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 18px;
+            flex-wrap: wrap;
+        }
+        .home-sub .badge {
+            background: var(--bg-category);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        /* Category grid */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 18px;
+            margin-top: 28px;
+        }
+
+        .category-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 24px 16px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid #f0e8dc;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(74, 55, 40, 0.10);
+            border-color: var(--bg-dark);
+        }
+
+        .category-card .icon {
+            font-size: 2.4rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .category-card .name {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+        .category-card .name-ar {
+            font-family: var(--font-arabic);
+            font-size: 0.9rem;
+            color: var(--text-soft);
+            direction: rtl;
+            margin-top: 2px;
+        }
+        .category-card .count {
+            font-size: 0.7rem;
+            color: #b3a090;
+            margin-top: 6px;
+        }
+
+        /* ===== CATEGORY PAGE ===== */
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .category-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .category-header h2 .ar {
+            font-family: var(--font-arabic);
+            font-weight: 400;
+            font-size: 1.4rem;
+            color: var(--text-soft);
+            margin-left: 10px;
+        }
+        .category-header .tools {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-flash {
+            padding: 8px 20px;
+            border-radius: 30px;
+            background: var(--bg-dark);
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .btn-flash:hover {
+            background: var(--text-dark);
+            transform: scale(1.02);
+        }
+
+        .btn-back {
+            padding: 8px 18px;
+            border-radius: 30px;
+            background: var(--bg-beige);
+            color: var(--text-soft);
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .btn-back:hover {
+            background: var(--bg-category);
+        }
+
+        /* Word grid */
+        .word-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        /* Word card */
+        .word-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 18px 18px 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid #f0e8dc;
+            transition: var(--transition);
+            position: relative;
+        }
+        .word-card:hover {
+            border-color: var(--bg-accent);
+            box-shadow: 0 4px 16px rgba(74, 55, 40, 0.06);
+        }
+
+        .word-card .top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .word-card .arabic {
+            font-family: var(--font-arabic);
+            font-size: 1.7rem;
+            font-weight: 600;
+            direction: rtl;
+            line-height: 1.3;
+            color: var(--text-dark);
+            flex: 1;
+        }
+        .word-card .audio-btn {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            transition: var(--transition);
+            border: none;
+            margin-top: 2px;
+        }
+        .word-card .audio-btn:hover {
+            background: var(--bg-accent);
+            color: #fff;
+        }
+        .word-card .audio-btn.playing {
+            background: var(--bg-dark);
+            color: #fff;
+        }
+
+        .word-card .translit {
+            font-size: 0.85rem;
+            color: var(--text-soft);
+            font-weight: 400;
+            margin-top: 4px;
+            font-style: italic;
+            letter-spacing: 0.3px;
+        }
+
+        .word-card .bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #f0e8dc;
+            gap: 10px;
+        }
+
+        .word-card .translation {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+        .word-card .translation.hidden {
+            color: #d0c0b0;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        .word-card .translation.hidden::after {
+            content: '•••';
+            letter-spacing: 2px;
+        }
+        .word-card .translation.hidden .text {
+            display: none;
+        }
+
+        .word-card .toggle-trans {
+            flex-shrink: 0;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            background: var(--bg-beige);
+            color: var(--text-soft);
+            transition: var(--transition);
+            border: none;
+        }
+        .word-card .toggle-trans:hover {
+            background: var(--bg-category);
+        }
+        .word-card .toggle-trans.active {
+            background: var(--bg-dark);
+            color: #fff;
+        }
+
+        /* ===== FLASHCARD MODE ===== */
+        .flash-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(253, 251, 247, 0.96);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+        .flash-overlay.active {
+            display: flex;
+        }
+
+        .flash-close {
+            position: absolute;
+            top: 24px;
+            right: 30px;
+            font-size: 2rem;
+            color: var(--text-soft);
+            transition: var(--transition);
+            background: none;
+            border: none;
+        }
+        .flash-close:hover {
+            color: var(--text-dark);
+            transform: rotate(90deg);
+        }
+
+        .flash-card {
+            width: 100%;
+            max-width: 480px;
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 40px 30px 30px;
+            box-shadow: 0 20px 60px rgba(74, 55, 40, 0.12);
+            border: 1px solid #f0e8dc;
+            text-align: center;
+            transition: var(--transition);
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flash-card .f-arabic {
+            font-family: var(--font-arabic);
+            font-size: 3.2rem;
+            font-weight: 700;
+            direction: rtl;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+        .flash-card .f-translit {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            font-style: italic;
+            margin-top: 8px;
+        }
+        .flash-card .f-translation {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-top: 16px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .flash-card .f-translation.show {
+            opacity: 1;
+        }
+
+        .flash-card .f-hint {
+            font-size: 0.8rem;
+            color: #b3a090;
+            margin-top: 16px;
+            cursor: pointer;
+            border-bottom: 1px dashed #d0c0b0;
+            padding-bottom: 2px;
+        }
+        .flash-card .f-hint:hover {
+            color: var(--text-soft);
+        }
+
+        .flash-nav {
+            display: flex;
+            gap: 20px;
+            margin-top: 28px;
+            align-items: center;
+        }
+        .flash-nav button {
+            padding: 10px 24px;
+            border-radius: 30px;
+            background: var(--bg-beige);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            border: none;
+        }
+        .flash-nav button:hover {
+            background: var(--bg-category);
+        }
+        .flash-nav .f-counter {
+            font-size: 0.85rem;
+            color: var(--text-soft);
+            min-width: 60px;
+        }
+
+        /* ===== BACK TO TOP ===== */
+        .back-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            color: #fff;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(74, 55, 40, 0.15);
+            transition: var(--transition);
+            border: none;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(16px);
+            z-index: 90;
+        }
+        .back-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .back-top:hover {
+            background: var(--text-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--bg-beige);
+            border-top: 1px solid rgba(74, 55, 40, 0.06);
+            padding: 30px 0 20px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer .palm-bg {
+            position: absolute;
+            right: 20px;
+            bottom: 0;
+            opacity: 0.06;
+            font-size: 10rem;
+            line-height: 1;
+            pointer-events: none;
+            transform: rotate(6deg);
+        }
+        footer .palm-bg-left {
+            position: absolute;
+            left: 10px;
+            bottom: 0;
+            opacity: 0.04;
+            font-size: 8rem;
+            line-height: 1;
+            pointer-events: none;
+            transform: rotate(-8deg) scaleX(-1);
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-inner .left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-inner .left .flag-small {
+            width: 28px;
+            height: 18px;
+            border-radius: 2px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .footer-inner .left .flag-small svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .footer-inner .copy {
+            font-size: 0.8rem;
+            color: var(--text-soft);
+        }
+        .footer-inner .copy strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .header-inner {
+                flex-wrap: wrap;
+            }
+            .search-wrap {
+                order: 3;
+                flex-basis: 100%;
+                max-width: 100%;
+            }
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 4px;
+                padding-top: 10px;
+                border-top: 1px solid rgba(74, 55, 40, 0.06);
+            }
+            nav.open {
+                display: flex;
+            }
+            nav a {
+                padding: 10px 16px;
+                border-radius: 10px;
+                text-align: center;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .home-hero h1 {
+                font-size: 1.8rem;
+            }
+            .category-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+            .word-grid {
+                grid-template-columns: 1fr;
+            }
+            .flash-card {
+                padding: 30px 20px;
+            }
+            .flash-card .f-arabic {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1rem;
+            }
+            .logo-flag {
+                width: 28px;
+                height: 18px;
+            }
+            .home-hero h1 {
+                font-size: 1.4rem;
+            }
+            .category-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 12px;
+            }
+            .category-card {
+                padding: 16px 10px;
+            }
+            .category-card .icon {
+                font-size: 1.8rem;
+            }
+            .word-card .arabic {
+                font-size: 1.3rem;
+            }
+            .back-top {
+                bottom: 16px;
+                right: 16px;
+                width: 42px;
+                height: 42px;
+                font-size: 1.2rem;
+            }
+            .flash-nav button {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* ===== UTILITY ===== */
+        .hidden-page {
+            display: none;
+        }
+        .visible-page {
+            display: block;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        .mt-20 {
+            margin-top: 20px;
+        }
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+        .gap-8 {
+            gap: 8px;
+        }
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <div class="logo-flag">
+                    <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="120" height="80" fill="#006C35" />
+                        <rect y="40" width="120" height="40" fill="#ffffff" />
+                        <text x="60" y="38" font-family="Amiri, serif" font-size="22" fill="#ffffff" text-anchor="middle" dominant-baseline="central" direction="rtl" unicode-bidi="bidi-override" font-weight="700">لا إله إلا الله محمد رسول الله</text>
+                        <path d="M 60 46 L 80 72 L 40 72 Z" fill="#006C35" />
+                    </svg>
+                </div>
+                <span>Учим арабский <span class="accent">• слова по темам</span></span>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Меню">☰</button>
+
+            <nav id="mainNav">
+                <a href="#" data-page="home" class="active">Главная</a>
+                <a href="#" data-page="category" data-cat="verbs">Глаголы</a>
+                <a href="#" data-page="category" data-cat="adjectives">Прилагательные</a>
+                <a href="#" data-page="category" data-cat="colors">Цвета</a>
+                <a href="#" data-page="category" data-cat="numbers">Числа</a>
+                <a href="#" data-page="category" data-cat="food">Еда</a>
+                <a href="#" data-page="category" data-cat="clothing">Одежда</a>
+                <a href="#" data-page="category" data-cat="animals">Животные</a>
+                <a href="#" data-page="category" data-cat="time">Время</a>
+                <a href="#" data-page="category" data-cat="travel">Путешествия</a>
+                <a href="#" data-page="category" data-cat="general">Общие</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+        <div class="container">
+
+            <!-- Breadcrumbs -->
+            <div class="breadcrumbs" id="breadcrumbs">
+                <a href="#" data-page="home">Главная</a>
+                <span class="sep">›</span>
+                <span id="breadcrumbCategory">Все темы</span>
+            </div>
+
+            <!-- ===== HOME PAGE ===== -->
+            <div id="page-home" class="visible-page">
+                <div class="home-hero">
+                    <h1>
+                        📖 Учим арабские слова
+                        <span class="ar">كلمات عربية</span>
+                    </h1>
+                    <p>Лексика по темам с произношением и переводом</p>
+                    <div class="home-sub">
+                        <span class="badge">🌴 10+ тем</span>
+                        <span class="badge">🔊 Аудио</span>
+                        <span class="badge">📝 Самопроверка</span>
+                    </div>
+                </div>
+
+                <div class="category-grid" id="homeCategoryGrid">
+                    <!-- rendered by JS -->
+                </div>
+            </div>
+
+            <!-- ===== CATEGORY PAGE ===== -->
+            <div id="page-category" class="hidden-page">
+                <div class="category-header">
+                    <h2 id="categoryTitle">
+                        <span id="catName">Глаголы</span>
+                        <span class="ar" id="catNameAr">أفعال</span>
+                    </h2>
+                    <div class="tools">
+                        <button class="btn-back" id="btnBackHome">← На главную</button>
+                        <button class="btn-flash" id="btnFlashOpen">🔄 Карточки</button>
+                    </div>
+                </div>
+                <div class="word-grid" id="wordGrid">
+                    <!-- rendered by JS -->
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ===== FLASHCARD OVERLAY ===== -->
+    <div class="flash-overlay" id="flashOverlay">
+        <button class="flash-close" id="flashClose">✕</button>
+        <div class="flash-card" id="flashCard">
+            <div class="f-arabic" id="flashArabic">أَحْمَر</div>
+            <div class="f-translit" id="flashTranslit">(’aḥmar)</div>
+            <div class="f-translation" id="flashTranslation">Красный</div>
+            <div class="f-hint" id="flashHint">👆 нажми, чтобы показать перевод</div>
+        </div>
+        <div class="flash-nav">
+            <button id="flashPrev">◀ Назад</button>
+            <span class="f-counter" id="flashCounter">1 / 10</span>
+            <button id="flashNext">Вперёд ▶</button>
+        </div>
+    </div>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-top" id="backTop" aria-label="Наверх">↑</button>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="palm-bg">🌴</div>
+        <div class="palm-bg-left">🌴</div>
+        <div class="container footer-inner">
+            <div class="left">
+                <div class="flag-small">
+                    <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="120" height="80" fill="#006C35" />
+                        <rect y="40" width="120" height="40" fill="#ffffff" />
+                        <text x="60" y="38" font-family="Amiri, serif" font-size="22" fill="#ffffff" text-anchor="middle" dominant-baseline="central" direction="rtl" unicode-bidi="bidi-override" font-weight="700">لا إله إلا الله محمد رسول الله</text>
+                        <path d="M 60 46 L 80 72 L 40 72 Z" fill="#006C35" />
+                    </svg>
+                </div>
+                <span class="copy">🇸🇦 <strong>Учите арабский с удовольствием</strong> • слова по темам</span>
+            </div>
+            <span class="copy" style="font-size:0.7rem; color:#b3a090;">🌴 Аравийская атмосфера</span>
+        </div>
+    </footer>
+
+
+    <!-- ============================================================ -->
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ================================================================
+        // DATA
+        // ================================================================
+
+        const WORDS_DATA = {
+
+            verbs: {
+                name: 'Глаголы',
+                nameAr: 'أفعال',
+                icon: '🏃',
+                words: [
+                    { ar: 'ذهب', translit: 'dhahaba', ru: 'идти' },
+                    { ar: 'أكل', translit: 'akala', ru: 'есть' },
+                    { ar: 'شرب', translit: 'shariba', ru: 'пить' },
+                    { ar: 'قال', translit: 'qāla', ru: 'говорить' },
+                    { ar: 'رأى', translit: 'ra\'ā', ru: 'видеть' },
+                    { ar: 'قرأ', translit: 'qara\'a', ru: 'читать' },
+                    { ar: 'كتب', translit: 'kataba', ru: 'писать' },
+                    { ar: 'فهم', translit: 'fahima', ru: 'понимать' },
+                    { ar: 'عاش', translit: '\'āsha', ru: 'жить' },
+                    { ar: 'فعل', translit: 'fa\'ala', ru: 'делать' },
+                    { ar: 'أراد', translit: 'arāda', ru: 'хотеть' },
+                    { ar: 'أحب', translit: 'aḥabba', ru: 'любить' },
+                    { ar: 'نام', translit: 'nāma', ru: 'спать' },
+                    { ar: 'جلس', translit: 'jalasa', ru: 'сидеть' },
+                    { ar: 'وقف', translit: 'waqafa', ru: 'стоять' },
+                    { ar: 'ركض', translit: 'rakada', ru: 'бежать' },
+                    { ar: 'سبح', translit: 'sabaḥa', ru: 'плавать' },
+                    { ar: 'طار', translit: 'ṭāra', ru: 'лететь' },
+                    { ar: 'غنى', translit: 'ghanā', ru: 'петь' },
+                    { ar: 'رقص', translit: 'raqaṣa', ru: 'танцевать' },
+                    { ar: 'ضحك', translit: 'ḍaḥika', ru: 'смеяться' },
+                    { ar: 'بكى', translit: 'bakā', ru: 'плакать' },
+                ]
+            },
+
+            adjectives: {
+                name: 'Прилагательные',
+                nameAr: 'صفات',
+                icon: '🎨',
+                words: [
+                    { ar: 'كبير', translit: 'kabīr', ru: 'большой' },
+                    { ar: 'صغير', translit: 'ṣaghīr', ru: 'маленький' },
+                    { ar: 'جيد', translit: 'jayyid', ru: 'хороший' },
+                    { ar: 'سيئ', translit: 'sayyi\'', ru: 'плохой' },
+                    { ar: 'جديد', translit: 'jadīd', ru: 'новый' },
+                    { ar: 'قديم', translit: 'qadīm', ru: 'старый' },
+                    { ar: 'جميل', translit: 'jamīl', ru: 'красивый' },
+                    { ar: 'بارد', translit: 'bārid', ru: 'холодный' },
+                    { ar: 'حار', translit: 'ḥārr', ru: 'горячий' },
+                    { ar: 'لذيذ', translit: 'ladhīdh', ru: 'вкусный' },
+                    { ar: 'غالٍ', translit: 'ghālin', ru: 'дорогой' },
+                    { ar: 'رخيص', translit: 'rakhīṣ', ru: 'дешёвый' },
+                    { ar: 'طويل', translit: 'ṭawīl', ru: 'длинный' },
+                    { ar: 'قصير', translit: 'qaṣīr', ru: 'короткий' },
+                    { ar: 'قوي', translit: 'qawiyy', ru: 'сильный' },
+                    { ar: 'ضعيف', translit: 'ḍa\'īf', ru: 'слабый' },
+                    { ar: 'سريع', translit: 'sarī\'', ru: 'быстрый' },
+                    { ar: 'بطيء', translit: 'baṭī\'', ru: 'медленный' },
+                    { ar: 'صعب', translit: 'ṣa\'b', ru: 'трудный' },
+                    { ar: 'سهل', translit: 'sahl', ru: 'лёгкий' },
+                ]
+            },
+
+            colors: {
+                name: 'Цвета',
+                nameAr: 'ألوان',
+                icon: '🎨',
+                words: [
+                    { ar: 'أبيض', translit: 'abyaḍ', ru: 'белый' },
+                    { ar: 'أسود', translit: 'aswad', ru: 'чёрный' },
+                    { ar: 'أحمر', translit: 'aḥmar', ru: 'красный' },
+                    { ar: 'أخضر', translit: 'akhḍar', ru: 'зелёный' },
+                    { ar: 'أزرق', translit: 'azraq', ru: 'синий' },
+                    { ar: 'أصفر', translit: 'aṣfar', ru: 'жёлтый' },
+                    { ar: 'بني', translit: 'bunnī', ru: 'коричневый' },
+                    { ar: 'برتقالي', translit: 'burtuqālī', ru: 'оранжевый' },
+                    { ar: 'بنفسجي', translit: 'banafsajī', ru: 'фиолетовый' },
+                    { ar: 'وردي', translit: 'wardī', ru: 'розовый' },
+                    { ar: 'رمادي', translit: 'ramādī', ru: 'серый' },
+                    { ar: 'ذهبي', translit: 'dhahabī', ru: 'золотой' },
+                ]
+            },
+
+            numbers: {
+                name: 'Числа',
+                nameAr: 'أرقام',
+                icon: '🔢',
+                words: [
+                    { ar: 'صفر', translit: 'ṣifr', ru: 'ноль' },
+                    { ar: 'واحد', translit: 'wāḥid', ru: 'один' },
+                    { ar: 'اثنان', translit: 'ithnān', ru: 'два' },
+                    { ar: 'ثلاثة', translit: 'thalātha', ru: 'три' },
+                    { ar: 'أربعة', translit: 'arba\'a', ru: 'четыре' },
+                    { ar: 'خمسة', translit: 'khamsa', ru: 'пять' },
+                    { ar: 'ستة', translit: 'sitta', ru: 'шесть' },
+                    { ar: 'سبعة', translit: 'sab\'a', ru: 'семь' },
+                    { ar: 'ثمانية', translit: 'thamāniya', ru: 'восемь' },
+                    { ar: 'تسعة', translit: 'tis\'a', ru: 'девять' },
+                    { ar: 'عشرة', translit: '\'ashara', ru: 'десять' },
+                    { ar: 'أحد عشر', translit: 'aḥada \'ashara', ru: 'одиннадцать' },
+                    { ar: 'اثنا عشر', translit: 'ithnā \'ashara', ru: 'двенадцать' },
+                    { ar: 'ثلاثة عشر', translit: 'thalāthata \'ashara', ru: 'тринадцать' },
+                    { ar: 'أربعة عشر', translit: 'arba\'ata \'ashara', ru: 'четырнадцать' },
+                    { ar: 'خمسة عشر', translit: 'khamsata \'ashara', ru: 'пятнадцать' },
+                    { ar: 'ستة عشر', translit: 'sittata \'ashara', ru: 'шестнадцать' },
+                    { ar: 'سبعة عشر', translit: 'sab\'ata \'ashara', ru: 'семнадцать' },
+                    { ar: 'ثمانية عشر', translit: 'thamāniyata \'ashara', ru: 'восемнадцать' },
+                    { ar: 'تسعة عشر', translit: 'tis\'ata \'ashara', ru: 'девятнадцать' },
+                    { ar: 'عشرون', translit: '\'ishrūn', ru: 'двадцать' },
+                    { ar: 'ثلاثون', translit: 'thalāthūn', ru: 'тридцать' },
+                    { ar: 'أربعون', translit: 'arba\'ūn', ru: 'сорок' },
+                    { ar: 'خمسون', translit: 'khamsūn', ru: 'пятьдесят' },
+                    { ar: 'ستون', translit: 'sittūn', ru: 'шестьдесят' },
+                    { ar: 'سبعون', translit: 'sab\'ūn', ru: 'семьдесят' },
+                    { ar: 'ثمانون', translit: 'thamānūn', ru: 'восемьдесят' },
+                    { ar: 'تسعون', translit: 'tis\'ūn', ru: 'девяносто' },
+                    { ar: 'مائة', translit: 'mi\'a', ru: 'сто' },
+                    { ar: 'ألف', translit: 'alf', ru: 'тысяча' },
+                ]
+            },
+
+            food: {
+                name: 'Еда и напитки',
+                nameAr: 'طعام وشراب',
+                icon: '🍽️',
+                words: [
+                    { ar: 'خبز', translit: 'khubz', ru: 'хлеб' },
+                    { ar: 'ماء', translit: 'mā\'', ru: 'вода' },
+                    { ar: 'قهوة', translit: 'qahwa', ru: 'кофе' },
+                    { ar: 'شاي', translit: 'shāy', ru: 'чай' },
+                    { ar: 'حليب', translit: 'ḥalīb', ru: 'молоко' },
+                    { ar: 'أرز', translit: 'ruzz', ru: 'рис' },
+                    { ar: 'لحم', translit: 'laḥm', ru: 'мясо' },
+                    { ar: 'دجاج', translit: 'dajāj', ru: 'курица' },
+                    { ar: 'تمر', translit: 'tamr', ru: 'финики' },
+                    { ar: 'سكر', translit: 'sukkar', ru: 'сахар' },
+                    { ar: 'ملح', translit: 'milḥ', ru: 'соль' },
+                    { ar: 'تفاح', translit: 'tuffāḥ', ru: 'яблоко' },
+                    { ar: 'موز', translit: 'mawz', ru: 'банан' },
+                    { ar: 'برتقال', translit: 'burtuqāl', ru: 'апельсин' },
+                    { ar: 'عنب', translit: '\'inab', ru: 'виноград' },
+                    { ar: 'خضار', translit: 'khuḍār', ru: 'овощи' },
+                    { ar: 'فاكهة', translit: 'fākiha', ru: 'фрукты' },
+                ]
+            },
+
+            clothing: {
+                name: 'Одежда',
+                nameAr: 'ملابس',
+                icon: '👕',
+                words: [
+                    { ar: 'قميص', translit: 'qamīṣ', ru: 'рубашка' },
+                    { ar: 'سروال', translit: 'sirwāl', ru: 'брюки' },
+                    { ar: 'فستان', translit: 'fustān', ru: 'платье' },
+                    { ar: 'حذاء', translit: 'ḥidhā\'', ru: 'обувь' },
+                    { ar: 'وشاح', translit: 'wishāḥ', ru: 'шарф' },
+                    { ar: 'غترة', translit: 'ghutra', ru: 'гутра' },
+                    { ar: 'عباية', translit: '\'abāya', ru: 'абайя' },
+                    { ar: 'جورب', translit: 'jawrab', ru: 'носок' },
+                    { ar: 'قبعة', translit: 'qubba\'a', ru: 'шляпа' },
+                    { ar: 'سترة', translit: 'sutra', ru: 'куртка' },
+                ]
+            },
+
+            animals: {
+                name: 'Животные',
+                nameAr: 'حيوانات',
+                icon: '🐪',
+                words: [
+                    { ar: 'جمل', translit: 'jamal', ru: 'верблюд' },
+                    { ar: 'حصان', translit: 'ḥiṣān', ru: 'лошадь' },
+                    { ar: 'قطة', translit: 'qiṭṭa', ru: 'кошка' },
+                    { ar: 'كلب', translit: 'kalb', ru: 'собака' },
+                    { ar: 'طائر', translit: 'ṭā\'ir', ru: 'птица' },
+                    { ar: 'سمكة', translit: 'samaka', ru: 'рыба' },
+                    { ar: 'أسد', translit: 'asad', ru: 'лев' },
+                    { ar: 'فيل', translit: 'fīl', ru: 'слон' },
+                    { ar: 'نمر', translit: 'namir', ru: 'тигр' },
+                    { ar: 'أرنب', translit: 'arnab', ru: 'кролик' },
+                ]
+            },
+
+            time: {
+                name: 'Время и дни',
+                nameAr: 'الوقت والأيام',
+                icon: '⏳',
+                words: [
+                    { ar: 'اليوم', translit: 'al-yawm', ru: 'сегодня' },
+                    { ar: 'غداً', translit: 'ghadan', ru: 'завтра' },
+                    { ar: 'أمس', translit: 'ams', ru: 'вчера' },
+                    { ar: 'صباح', translit: 'ṣabāḥ', ru: 'утро' },
+                    { ar: 'مساء', translit: 'masā\'', ru: 'вечер' },
+                    { ar: 'ساعة', translit: 'sā\'a', ru: 'час' },
+                    { ar: 'دقيقة', translit: 'daqīqa', ru: 'минута' },
+                    { ar: 'يوم', translit: 'yawm', ru: 'день' },
+                    { ar: 'أسبوع', translit: 'usbū\'', ru: 'неделя' },
+                    { ar: 'شهر', translit: 'shahr', ru: 'месяц' },
+                    { ar: 'سنة', translit: 'sana', ru: 'год' },
+                    { ar: 'الأحد', translit: 'al-aḥad', ru: 'воскресенье' },
+                    { ar: 'الاثنين', translit: 'al-ithnayn', ru: 'понедельник' },
+                    { ar: 'الثلاثاء', translit: 'ath-thulāthā\'', ru: 'вторник' },
+                    { ar: 'الأربعاء', translit: 'al-arba\'ā\'', ru: 'среда' },
+                    { ar: 'الخميس', translit: 'al-khamīs', ru: 'четверг' },
+                    { ar: 'الجمعة', translit: 'al-jumu\'a', ru: 'пятница' },
+                    { ar: 'السبت', translit: 'as-sabt', ru: 'суббота' },
+                ]
+            },
+
+            travel: {
+                name: 'Путешествия и места',
+                nameAr: 'السفر والأماكن',
+                icon: '✈️',
+                words: [
+                    { ar: 'مطار', translit: 'maṭār', ru: 'аэропорт' },
+                    { ar: 'فندق', translit: 'funduq', ru: 'гостиница' },
+                    { ar: 'مطعم', translit: 'maṭ\'am', ru: 'ресторан' },
+                    { ar: 'سوق', translit: 'sūq', ru: 'рынок' },
+                    { ar: 'مسجد', translit: 'masjid', ru: 'мечеть' },
+                    { ar: 'مستشفى', translit: 'mustashfā', ru: 'больница' },
+                    { ar: 'مدرسة', translit: 'madrasa', ru: 'школа' },
+                    { ar: 'بيت', translit: 'bayt', ru: 'дом' },
+                    { ar: 'غرفة', translit: 'ghurfa', ru: 'комната' },
+                    { ar: 'مدينة', translit: 'madīna', ru: 'город' },
+                    { ar: 'شارع', translit: 'shāri\'', ru: 'улица' },
+                    { ar: 'قرية', translit: 'qarya', ru: 'деревня' },
+                    { ar: 'حديقة', translit: 'ḥadīqa', ru: 'сад' },
+                ]
+            },
+
+            general: {
+                name: 'Общие обозначения',
+                nameAr: 'أشياء عامة',
+                icon: '📦',
+                words: [
+                    { ar: 'كلمة', translit: 'kalima', ru: 'слово' },
+                    { ar: 'كتاب', translit: 'kitāb', ru: 'книга' },
+                    { ar: 'سيارة', translit: 'sayyāra', ru: 'машина' },
+                    { ar: 'هاتف', translit: 'hātif', ru: 'телефон' },
+                    { ar: 'مفتاح', translit: 'miftāḥ', ru: 'ключ' },
+                    { ar: 'كرسي', translit: 'kursiyy', ru: 'стул' },
+                    { ar: 'طاولة', translit: 'ṭāwila', ru: 'стол' },
+                    { ar: 'باب', translit: 'bāb', ru: 'дверь' },
+                    { ar: 'نافذة', translit: 'nāfidha', ru: 'окно' },
+                    { ar: 'بلد', translit: 'balad', ru: 'страна' },
+                    { ar: 'شارع', translit: 'shāri\'', ru: 'улица' },
+                ]
+            }
+        };
+
+        // Category order for display
+        const CATEGORY_ORDER = [
+            'verbs', 'adjectives', 'colors', 'numbers', 'food',
+            'clothing', 'animals', 'time', 'travel', 'general'
+        ];
+
+        // ================================================================
+        // STATE
+        // ================================================================
+
+        let currentCategory = 'verbs';
+        let currentPage = 'home';
+
+        // Flashcard state
+        let flashWords = [];
+        let flashIndex = 0;
+        let flashReveal = false;
+
+        // ================================================================
+        // DOM REFS
+        // ================================================================
+
+        const $ = (sel) => document.querySelector(sel);
+        const $$ = (sel) => document.querySelectorAll(sel);
+
+        const homePage = $('#page-home');
+        const categoryPage = $('#page-category');
+        const homeGrid = $('#homeCategoryGrid');
+        const wordGrid = $('#wordGrid');
+        const catTitle = $('#catName');
+        const catTitleAr = $('#catNameAr');
+        const breadcrumbCat = $('#breadcrumbCategory');
+        const btnBackHome = $('#btnBackHome');
+        const btnFlashOpen = $('#btnFlashOpen');
+        const flashOverlay = $('#flashOverlay');
+        const flashClose = $('#flashClose');
+        const flashArabic = $('#flashArabic');
+        const flashTranslit = $('#flashTranslit');
+        const flashTranslation = $('#flashTranslation');
+        const flashHint = $('#flashHint');
+        const flashPrev = $('#flashPrev');
+        const flashNext = $('#flashNext');
+        const flashCounter = $('#flashCounter');
+        const backTop = $('#backTop');
+        const searchInput = $('#searchInput');
+        const searchResults = $('#searchResults');
+        const navToggle = $('#navToggle');
+        const mainNav = $('#mainNav');
+
+        // ================================================================
+        // RENDER FUNCTIONS
+        // ================================================================
+
+        function renderHome() {
+            let html = '';
+            CATEGORY_ORDER.forEach(key => {
+                const cat = WORDS_DATA[key];
+                if (!cat) return;
+                html += `
+                    <div class="category-card" data-cat="${key}">
+                        <span class="icon">${cat.icon || '📁'}</span>
+                        <div class="name">${cat.name}</div>
+                        <div class="name-ar">${cat.nameAr}</div>
+                        <div class="count">${cat.words.length} слов</div>
+                    </div>
+                `;
+            });
+            homeGrid.innerHTML = html;
+
+            // Click handler for category cards
+            homeGrid.querySelectorAll('.category-card').forEach(el => {
+                el.addEventListener('click', () => {
+                    const cat = el.dataset.cat;
+                    if (cat) navigateToCategory(cat);
+                });
+            });
+        }
+
+        function renderCategory(catKey) {
+            const cat = WORDS_DATA[catKey];
+            if (!cat) return;
+
+            currentCategory = catKey;
+            catTitle.textContent = cat.name;
+            catTitleAr.textContent = cat.nameAr;
+            breadcrumbCat.textContent = cat.name;
+
+            let html = '';
+            cat.words.forEach((w, idx) => {
+                html += `
+                    <div class="word-card" data-index="${idx}">
+                        <div class="top">
+                            <div class="arabic">${w.ar}</div>
+                            <button class="audio-btn" data-ar="${w.ar}" aria-label="Произнести">🔊</button>
+                        </div>
+                        <div class="translit">${w.translit}</div>
+                        <div class="bottom">
+                            <div class="translation" data-hidden="false">
+                                <span class="text">${w.ru}</span>
+                            </div>
+                            <button class="toggle-trans" data-hidden="false">Скрыть</button>
+                        </div>
+                    </div>
+                `;
+            });
+            wordGrid.innerHTML = html;
+
+            // Audio buttons
+            wordGrid.querySelectorAll('.audio-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const text = this.dataset.ar;
+                    speakArabic(text, this);
+                });
+            });
+
+            // Toggle translation
+            wordGrid.querySelectorAll('.toggle-trans').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const card = this.closest('.word-card');
+                    const trans = card.querySelector('.translation');
+                    const isHidden = trans.dataset.hidden === 'true';
+                    if (isHidden) {
+                        trans.dataset.hidden = 'false';
+                        trans.classList.remove('hidden');
+                        this.textContent = 'Скрыть';
+                        this.dataset.hidden = 'false';
+                    } else {
+                        trans.dataset.hidden = 'true';
+                        trans.classList.add('hidden');
+                        this.textContent = 'Показать';
+                        this.dataset.hidden = 'true';
+                    }
+                });
+            });
+
+            // Update flash data
+            flashWords = cat.words;
+            flashIndex = 0;
+            flashReveal = false;
+        }
+
+        // ================================================================
+        // NAVIGATION
+        // ================================================================
+
+        function showPage(page) {
+            currentPage = page;
+            if (page === 'home') {
+                homePage.classList.remove('hidden-page');
+                homePage.classList.add('visible-page');
+                categoryPage.classList.add('hidden-page');
+                categoryPage.classList.remove('visible-page');
+                breadcrumbCat.textContent = 'Все темы';
+                // Update nav active
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                document.querySelector('nav a[data-page="home"]')?.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (page === 'category') {
+                homePage.classList.add('hidden-page');
+                homePage.classList.remove('visible-page');
+                categoryPage.classList.remove('hidden-page');
+                categoryPage.classList.add('visible-page');
+                // Update nav active
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                document.querySelector(`nav a[data-cat="${currentCategory}"]`)?.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            // Close mobile nav
+            mainNav.classList.remove('open');
+        }
+
+        function navigateToCategory(catKey) {
+            if (!WORDS_DATA[catKey]) return;
+            renderCategory(catKey);
+            showPage('category');
+        }
+
+        function navigateHome() {
+            showPage('home');
+        }
+
+        // ================================================================
+        // SPEECH
+        // ================================================================
+
+        function speakArabic(text, btn) {
+            if (!window.speechSynthesis) {
+                alert('Ваш браузер не поддерживает голосовое воспроизведение.');
+                return;
+            }
+
+            // Cancel any ongoing speech
+            window.speechSynthesis.cancel();
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ar-SA';
+            utterance.rate = 0.85;
+            utterance.pitch = 1;
+
+            if (btn) {
+                btn.classList.add('playing');
+                utterance.onend = () => btn.classList.remove('playing');
+                utterance.onerror = () => btn.classList.remove('playing');
+            }
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // ================================================================
+        // FLASHCARD
+        // ================================================================
+
+        function openFlash() {
+            if (flashWords.length === 0) return;
+            flashIndex = 0;
+            flashReveal = false;
+            flashOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            renderFlashCard();
+        }
+
+        function closeFlash() {
+            flashOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function renderFlashCard() {
+            const w = flashWords[flashIndex];
+            if (!w) return;
+            flashArabic.textContent = w.ar;
+            flashTranslit.textContent = w.translit;
+            flashTranslation.textContent = w.ru;
+            flashTranslation.classList.remove('show');
+            flashReveal = false;
+            flashHint.textContent = '👆 нажми, чтобы показать перевод';
+            flashCounter.textContent = `${flashIndex + 1} / ${flashWords.length}`;
+        }
+
+        function toggleFlashReveal() {
+            if (flashReveal) {
+                flashTranslation.classList.remove('show');
+                flashReveal = false;
+                flashHint.textContent = '👆 нажми, чтобы показать перевод';
+            } else {
+                flashTranslation.classList.add('show');
+                flashReveal = true;
+                flashHint.textContent = '👆 нажми, чтобы скрыть перевод';
+            }
+        }
+
+        function flashPrevCard() {
+            if (flashWords.length === 0) return;
+            flashIndex = (flashIndex - 1 + flashWords.length) % flashWords.length;
+            renderFlashCard();
+        }
+
+        function flashNextCard() {
+            if (flashWords.length === 0) return;
+            flashIndex = (flashIndex + 1) % flashWords.length;
+            renderFlashCard();
+        }
+
+        // ================================================================
+        // SEARCH
+        // ================================================================
+
+        function performSearch(query) {
+            const q = query.toLowerCase().trim();
+            if (!q) {
+                searchResults.classList.remove('active');
+                return;
+            }
+
+            const results = [];
+            CATEGORY_ORDER.forEach(key => {
+                const cat = WORDS_DATA[key];
+                if (!cat) return;
+                cat.words.forEach(w => {
+                    const match =
+                        w.ar.includes(q) ||
+                        w.ru.toLowerCase().includes(q) ||
+                        w.translit.toLowerCase().includes(q);
+                    if (match) {
+                        results.push({
+                            ar: w.ar,
+                            ru: w.ru,
+                            translit: w.translit,
+                            category: cat.name,
+                            catKey: key
+                        });
+                    }
+                });
+            });
+
+            if (results.length === 0) {
+                searchResults.innerHTML = `<div class="no-result">😕 Ничего не найдено</div>`;
+                searchResults.classList.add('active');
+                return;
+            }
+
+            let html = '';
+            results.slice(0, 12).forEach(r => {
+                html += `
+                    <div class="result-item" data-cat="${r.catKey}">
+                        <span class="ar">${r.ar}</span>
+                        <span class="ru">${r.ru}</span>
+                        <span class="cat">${r.category}</span>
+                    </div>
+                `;
+            });
+            searchResults.innerHTML = html;
+            searchResults.classList.add('active');
+
+            searchResults.querySelectorAll('.result-item').forEach(el => {
+                el.addEventListener('click', () => {
+                    const cat = el.dataset.cat;
+                    if (cat && WORDS_DATA[cat]) {
+                        navigateToCategory(cat);
+                        searchResults.classList.remove('active');
+                        searchInput.value = '';
+                    }
+                });
+            });
+        }
+
+        // ================================================================
+        // BACK TO TOP
+        // ================================================================
+
+        function handleScroll() {
+            if (window.scrollY > 400) {
+                backTop.classList.add('visible');
+            } else {
+                backTop.classList.remove('visible');
+            }
+        }
+
+        // ================================================================
+        // INIT
+        // ================================================================
+
+        function init() {
+            renderHome();
+            showPage('home');
+
+            // Category links in nav
+            document.querySelectorAll('nav a[data-cat]').forEach(a => {
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const cat = a.dataset.cat;
+                    if (cat && WORDS_DATA[cat]) navigateToCategory(cat);
+                });
+            });
+
+            // Home link
+            document.querySelector('nav a[data-page="home"]')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                navigateHome();
+            });
+
+            // Breadcrumb home link
+            document.querySelector('.breadcrumbs a[data-page="home"]')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                navigateHome();
+            });
+
+            // Back button
+            btnBackHome.addEventListener('click', navigateHome);
+
+            // Flashcard
+            btnFlashOpen.addEventListener('click', openFlash);
+            flashClose.addEventListener('click', closeFlash);
+            flashHint.addEventListener('click', toggleFlashReveal);
+            flashPrev.addEventListener('click', flashPrevCard);
+            flashNext.addEventListener('click', flashNextCard);
+
+            // Keyboard shortcuts for flashcard
+            document.addEventListener('keydown', (e) => {
+                if (!flashOverlay.classList.contains('active')) return;
+                if (e.key === 'Escape') closeFlash();
+                if (e.key === 'ArrowLeft') flashPrevCard();
+                if (e.key === 'ArrowRight') flashNextCard();
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleFlashReveal();
+                }
+            });
+
+            // Close flash on overlay click (but not on card)
+            flashOverlay.addEventListener('click', (e) => {
+                if (e.target === flashOverlay) closeFlash();
+            });
+
+            // Search
+            const searchWrap = document.querySelector('.search-wrap');
+            const searchInput = document.createElement('input');
+            searchInput.type = 'text';
+            searchInput.placeholder = 'Поиск слов...';
+            searchInput.id = 'searchInput';
+            searchWrap.prepend(searchInput);
+
+            const searchIcon = document.createElement('span');
+            searchIcon.className = 'search-icon';
+            searchIcon.textContent = '🔍';
+            searchWrap.prepend(searchIcon);
+
+            const resultsContainer = document.createElement('div');
+            resultsContainer.className = 'search-results';
+            resultsContainer.id = 'searchResults';
+            searchWrap.appendChild(resultsContainer);
+
+            // Reassign refs
+            const searchInputRef = document.getElementById('searchInput');
+            const searchResultsRef = document.getElementById('searchResults');
+
+            searchInputRef.addEventListener('input', () => {
+                performSearch(searchInputRef.value);
+            });
+
+            searchInputRef.addEventListener('blur', () => {
+                setTimeout(() => {
+                    searchResultsRef.classList.remove('active');
+                }, 200);
+            });
+
+            searchInputRef.addEventListener('focus', () => {
+                if (searchInputRef.value.trim()) {
+                    performSearch(searchInputRef.value);
+                }
+            });
+
+            // Back to top
+            window.addEventListener('scroll', handleScroll);
+            backTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Mobile nav toggle
+            navToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('open');
+            });
+
+            // Close nav on link click (mobile)
+            mainNav.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', () => {
+                    mainNav.classList.remove('open');
+                });
+            });
+
+            // Handle initial hash
+            if (window.location.hash) {
+                const hash = window.location.hash.replace('#', '');
+                if (WORDS_DATA[hash]) {
+                    setTimeout(() => navigateToCategory(hash), 100);
+                }
+            }
+        }
+
+        // Run on DOM ready
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+
+</body>
+</html>
